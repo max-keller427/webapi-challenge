@@ -57,6 +57,7 @@ async function validateId(req, res, next) {
     const { id } = req.params;
     const project = await db.get(id);
     if (project) {
+      console.log(req.project);
       req.project = project;
       next();
     } else {
