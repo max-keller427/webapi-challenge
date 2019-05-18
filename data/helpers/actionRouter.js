@@ -13,9 +13,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", validateActionId, (req, res) => {
-  res.status(200).json(req.body);
-});
+// router.get("/:id", validateActionId, (req, res) => {
+//   res.status(200).json(req.action);
+// });
 
 router.post("/", async (req, res) => {
   try {
@@ -57,14 +57,14 @@ async function validateActionId(req, res, next) {
     const { id } = req.params;
     const action = await db.get(id);
     if (action) {
-      console.log(req.action);
       req.action = action;
       next();
     } else {
-      res.status(400).json({ message: "invalid user id" });
+      res.status(400).json({ message: "invalid action id" });
     }
   } catch (err) {
     res.status(500).json({ message: "Request could not be processed" });
   }
 }
+
 module.exports = router;

@@ -17,6 +17,15 @@ router.get("/:id", validateId, (req, res) => {
   res.status(200).json(req.project);
 });
 
+router.get("/:id/actions", validateId, async (req, res) => {
+  try {
+    const actions = await db.getProjectActions(req.params.id);
+    res.status(201).json(actions);
+  } catch (err) {
+    res.status(500).json({ message: "unable to find actions" });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const post = await db.insert(req.body);
@@ -57,11 +66,11 @@ async function validateId(req, res, next) {
     const { id } = req.params;
     const project = await db.get(id);
     if (project) {
-      console.log(req.project);
+      //   console.log(req.project);
       req.project = project;
       next();
     } else {
-      res.status(400).json({ message: "invalid user id" });
+      res.status(400).json({ message: "invalid project id" });
     }
   } catch (err) {
     res.status(500).json({ message: "Request could not be processed" });
