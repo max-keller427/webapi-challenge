@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+  The Express framework adds extra functionality to node.js that can server single page applications, build RESTful web services and serve static content.
+
 - [ ] Describe Middleware?
+
+  Middleware are functions that add features to express. You can use built in middleware, third party middleware, or custom middleware to add extra functionality to your server.
 
 - [ ] Describe a Resource?
 
+  Everything is a resource, and we manage each resource through a single url. The api will return every resource and the code to implement, or not implement it.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+  We can configure out API to return a status code that gives the user information on what happened when they sent their request, such as a 200 success or a 404 not found.
+
 - [ ] How can we partition our application into sub-applications?
+
+  We use routing to define our resources into individual urls that each have a unique response.
 
 ## Project Setup
 
